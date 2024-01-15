@@ -11,7 +11,7 @@ const Tour = ({ id, name, info, price, image, removeTour }) => {
         src={image}
         loading="lazy"
         alt={`${name} inamge`}
-        className=" aspect-square"
+        className=" aspect-square object-cover"
       />
       <div className="m-3 flex flex-col">
         <div>
