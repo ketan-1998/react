@@ -36,13 +36,13 @@ const SignupForm = ({setIsLoggedIn}) => {
   }
   return (
     <form action="" onSubmit={submitHandler} className="space-y-5">
-      <div className="bg-slate-500 rounded-3xl px-4 py-1 w-max text-slate-100 space-x-3 capitalize">
+      <div className="bg-slate-500 rounded-3xl px-6 py-3 w-max text-slate-100 space-x-3 capitalize">
         <span
           onClick={() => {
             setTag(!tag);
           }}
           className={`${
-            tag ? "bg-slate-900 px-4 rounded-xl py-1 text-slate-100" : ""
+            tag ? "bg-slate-900 px-4 rounded-xl py-2 text-slate-100" : ""
           }`}
         >
           student
@@ -52,7 +52,7 @@ const SignupForm = ({setIsLoggedIn}) => {
             setTag(!tag);
           }}
           className={`${
-            !tag ? "bg-slate-900 px-4 rounded-xl py-1 text-slate-100" : ""
+            !tag ? "bg-slate-900 px-4 rounded-xl py-2 text-slate-100" : ""
           }`}
         >
           Instructor
