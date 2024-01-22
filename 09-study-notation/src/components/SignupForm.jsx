@@ -35,7 +35,7 @@ const SignupForm = ({setIsLoggedIn}) => {
     console.log(formData)
   }
   return (
-    <form action="" onSubmit={submitHandler} className="space-y-5">
+    <form action="" onSubmit={submitHandler} className="space-y-5 pb-5">
       <div className="bg-slate-500 rounded-3xl px-6 py-3 w-max text-slate-100 space-x-3 capitalize">
         <span
           onClick={() => {

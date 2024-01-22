@@ -3,6 +3,7 @@ import { AiOutlineEye, AiOutlineEyeInvisible } from "react-icons/ai";
 import { useState } from "react";
 import { useNavigate } from "react-router-dom";
 import toast from "react-hot-toast";
+import { Link } from "react-router-dom";
 const LoginForm = ({ setIsLoggedIn }) => {
   const Navigate = useNavigate();
   const [showPass, setShowPass] = useState(false);
@@ -59,9 +60,19 @@ const LoginForm = ({ setIsLoggedIn }) => {
                 setShowPass(!showPass);
               }}
             >
-              {showPass ? <AiOutlineEye className="text-slate-900" /> : <AiOutlineEyeInvisible className="text-slate-900" />}
+              {showPass ? (
+                <AiOutlineEye className="text-slate-900" />
+              ) : (
+                <AiOutlineEyeInvisible className="text-slate-900" />
+              )}
             </span>
           </div>
+          <Link to={'/forgot'}>
+            {" "}
+            <p className="text-red-600 hover:text-red-800 cursor-pointer transition-all duration-200 pt-1 font-serif text-[14px] text-right">
+              forgot password
+            </p>
+          </Link>
         </div>
         <button className="grid place-items-center hover:bg-yellow-700 duration-200 transition-all bg-yellow-600 w-full text-slate-900 py-1  capitalize text-xl font-mono rounded-lg">
           sign in

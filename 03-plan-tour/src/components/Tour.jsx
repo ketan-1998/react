@@ -1,43 +1,37 @@
 import React from "react";
 import { useState } from "react";
-const Tour = ({ id, name, info, price, image, removeTour }) => {
-  const [descriptionShow, setDescriptionShow] = useState(true);
-  const description = descriptionShow
-    ? `${info.substring(0, 198)}... `
-    : `${info} `;
+const Tour = ({ id, name, info, image, price, removeTour }) => {
+  const [show, setShow] = useState(false);
+  let desc = show ? info : info.substr(0, 120) + "...";
   return (
-    <div className="bg-slate-800  rounded flex flex-col overflow-hidden">
-      <img
-        src={image}
-        loading="lazy"
-        alt={`${name} inamge`}
-        className=" aspect-square object-cover"
-      />
-      <div className="m-3 flex flex-col">
-        <div>
-          <h2 className="text-green-600 font-mono text-[22px] font-semibold">
-            {name}
-          </h2>
-          <p className="text-green-600 font-mono text-[18px]">₹ {price}</p>
-        </div>
-        <div>
-          {description}
-          <span
-            className="text-green-600 font-mono text-[15px] capitalize"
-            onClick={() => {
-              setDescriptionShow(!descriptionShow);
-            }}
-          >
-            {descriptionShow ? `read more` : "show less"}
-          </span>
-        </div>
+    <div className="w-[340px] bg-slate-900 pb-5 overflow-hidden rounded space-y-4">
+      <img src={image} alt={`${name}`} className="aspect-square object-cover" />
+      <div className="px-2">
+        <p className="text-center font-serif text-slate-200 text-3xl font-semibold">
+          {name}
+        </p>
+        <p className="text-slate-600 font-semibold text-xl">
+          <span className="text-red-900">₹</span>
+          {price}
+        </p>
+      </div>
+      <p className="text-balance text-justify px-2   text-slate-500">
+        {desc}
+        <span
+          className="text-yellow-800 capitalize"
+          onClick={() => setShow(!show)}
+        >
+          {!show ? " show more" : "  show less"}
+        </span>
+      </p>
+      <div className="px-5">
         <button
-          className="bg-slate-500 active:bg-slate-950 rounded capitalize mt-1 text-red-800 font-mono text-[22px] hover:bg-slate-700 duration-200"
+          className="text-center bg-violet-800 py-1  w-full rounded capitalize text-xl text-slate-200"
           onClick={() => {
             removeTour(id);
           }}
         >
-          remove tour
+          not interested
         </button>
       </div>
     </div>

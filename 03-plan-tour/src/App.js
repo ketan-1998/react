@@ -1,22 +1,28 @@
-import React from 'react'
-import Tours from './components/Tours'
-import Data from './data'
-import { useState } from 'react'
+import React, { useState } from "react";
+import Tours from "./components/Tours";
+import data from "./data";
 const App = () => {
-  const [allTours, setAllTour] = useState(Data)
+  const [allTours, setAllTours] = useState(data);
   function removeTour(id) {
-    let newTours = allTours.filter((tour) => tour.id !== id)
-    setAllTour(newTours)
-  }
-  function refTour(){
-    setAllTour(Data)
+    let updateTours = allTours.filter((tour) => tour.id !== id);
+    setAllTours(updateTours);
   }
   return (
-    <div className='bg-slate-900 w-screen min-h-screen text-slate-200 pt-10 pb-10 space-y-5 select-none'>
-      <h2 className='w-10/12 mx-auto bg-slate-400 text-slate-800 rounded-sm  text-center capitalize text-[35px] font-mono '>tour plans</h2>
-      <Tours allTours={allTours} removeTour={removeTour} refTour={refTour}/>
+    <div className="bg-slate-900 min-h-screen p-10 space-y-4 flex flex-col">
+      <h1 className="w-10/12 mx-auto bg-slate-500 text-center text-2xl capitalize font-mono rounded-sm py-1">
+        tours plan
+      </h1>
+      {allTours.length === 0 && (
+        <div className="flex flex-col justify-center items-center grow">
+          <p className="text-center text-2xl capitalize font-mono rounded-sm py-1">no tour left</p>
+          <button className="bg-slate-700 px-4 py-1 text-center rounded-sm capitalize" onClick={()=>{
+            setAllTours(data)
+          }}>refresh</button>
+        </div>
+      )}
+      {!(allTours.length === 0) && <Tours allTours={allTours} removeTour={removeTour} />}
     </div>
-  )
-}
+  );
+};
 
-export default App
+export default App;

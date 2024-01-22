@@ -3,20 +3,38 @@ import logo from "../assets/Logo.svg";
 import { Link, useNavigate } from "react-router-dom";
 import toast from "react-hot-toast";
 
-const Nav = ({ isLoggedIn,setIsLoggedIn }) => {
+const Nav = ({ isLoggedIn, setIsLoggedIn }) => {
   const Navigate = useNavigate();
   return (
     <div className="flex justify-between items-center flex-wrap">
-      <img src={logo} alt="logo" />
+      <Link to={"/"}>
+        {" "}
+        <img src={logo} alt="logo" />
+      </Link>
       <div className="space-x-4 text-xl font-mono">
         <span>
-          <Link to={"./"}>Home</Link>
+          <Link
+            to={"./"}
+            className="text-slate-400 text-xl hover:text-slate-200"
+          >
+            Home
+          </Link>
         </span>
         <span>
-          <Link to={"./"}>About</Link>
+          <Link
+            to={"./about"}
+            className="text-slate-400 text-xl hover:text-slate-200"
+          >
+            About
+          </Link>
         </span>
         <span>
-          <Link to={"./"}>Contact</Link>
+          <Link
+            to={"/contact"}
+            className="text-slate-400 text-xl hover:text-slate-200"
+          >
+            Contact
+          </Link>
         </span>
       </div>
       <div className="space-x-4 space-y-3">
@@ -25,7 +43,7 @@ const Nav = ({ isLoggedIn,setIsLoggedIn }) => {
             onClick={() => {
               Navigate("/signup");
             }}
-            className="px-4 bg-violet-800 rounded-sm py-1 font-mono text-slate-100"
+            className="px-5 active:bg-violet-900 bg-violet-500 hover:bg-violet-600 active:scale-105 duration-200 transition-all text-slate-400 py-1 rounded-sm capitalize hover:text-slate-100"
           >
             Sign up
           </button>
@@ -35,7 +53,7 @@ const Nav = ({ isLoggedIn,setIsLoggedIn }) => {
             onClick={() => {
               Navigate("/login");
             }}
-            className="px-4 bg-violet-800 rounded-sm py-1 font-mono text-slate-100"
+            className="px-5 active:bg-violet-900 bg-violet-500 hover:bg-violet-600 active:scale-105 duration-200 transition-all text-slate-400 py-1 rounded-sm capitalize hover:text-slate-100"
           >
             Login
           </button>
@@ -44,10 +62,10 @@ const Nav = ({ isLoggedIn,setIsLoggedIn }) => {
           <button
             onClick={() => {
               Navigate("/login");
-              setIsLoggedIn(true)
-              toast.success('Logged out')
+              setIsLoggedIn(true);
+              toast.success("Logged out");
             }}
-            className="px-4 bg-violet-800 rounded-sm py-1 font-mono text-slate-100"
+            className="px-5 active:bg-violet-900 bg-violet-500 hover:bg-violet-600 active:scale-105 duration-200 transition-all text-slate-400 py-1 rounded-sm capitalize hover:text-slate-100"
           >
             Log out
           </button>
@@ -57,7 +75,7 @@ const Nav = ({ isLoggedIn,setIsLoggedIn }) => {
             onClick={() => {
               Navigate("/dashboard");
             }}
-            className="px-4 bg-violet-800 rounded-sm py-1 font-mono text-slate-100"
+            className="px-5 active:bg-violet-900 bg-violet-500 hover:bg-violet-600 active:scale-105 duration-200 transition-all text-slate-400 py-1 rounded-sm capitalize hover:text-slate-100"
           >
             Dashboard
           </button>
