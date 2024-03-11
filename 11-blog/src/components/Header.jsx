@@ -7,9 +7,9 @@ const Header = () => {
   return (
   <div className="fixed top-0 w-full">
       <div
-      className={`text-center w-10/12 mx-auto rounded-sm capitalize font-semibold text-3xl font-mono py-2 relative ${
+      className={`text-center w-10/12 max-w-[850px] mx-auto rounded-sm capitalize font-semibold text-3xl font-mono py-2 relative ${
         mod === "light"
-          ? "bg-slate-400 text-slate-800"
+          ? "bg-green-200 text-green-800"
           : "bg-slate-800 text-slate-400"
       }`}
     >

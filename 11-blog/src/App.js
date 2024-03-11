@@ -13,8 +13,8 @@ function App() {
   return (
     <div
       className={`${
-        mod === "light" ? "bg-stone-100" : "bg-black"
-      }  select-none min-h-screen relative flex flex-col`}
+        mod === "light" ? "bg-blue-100" : "bg-gray-800"
+      }  select-none min-h-screen relative flex flex-col py-[10px]`}
     >
       <Header />
       {loading ? <Loading /> : <Blog />}

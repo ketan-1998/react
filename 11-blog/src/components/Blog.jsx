@@ -6,7 +6,7 @@ const Blog = () => {
   const { mod,posts } = useContext(BlogsContext);
   console.log(posts)
   return (
-    <div className={`w-10/12 mx-auto grow ${mod === "light" ? "bg-slate-500" : "bg-slate-700"} p-4 space-y-5 py-[60px]`}>
+    <div className={`w-10/12 max-w-[850px] mx-auto grow ${mod === "light" ? "bg-slate-500" : "bg-slate-700"} p-4 space-y-5 py-[60px]`}>
       {
         posts.map((post)=>(<Post {...post} key={post.id} />))
       }

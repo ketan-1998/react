@@ -11,20 +11,9 @@ const Pagination = () => {
           mod === "light"
             ? "bg-slate-400 text-slate-800"
             : "bg-slate-800 text-slate-400"
-        } w-10/12 mx-auto flex justify-between flex-wrap gap-2 px-5 py-2 rounded-sm items-center`}
+        } w-10/12 max-w-[850px] mx-auto flex justify-between flex-wrap gap-2 px-5 py-2 rounded-sm items-center`}
       >
         <div className="space-x-3 space-y-3 grow sm:grow-0  text-center">
-          {page < 6 && (
-            <button
-              className="p-1 bg-violet-600 capitalize rounded-sm px-5 text-xl text-slate-300"
-              onClick={() => {
-                setPage(page + 1);
-                pageHandle(page);
-              }}
-            >
-              next
-            </button>
-          )}
           {page > 1 && (
             <button
               className="p-1 bg-violet-600 capitalize rounded-sm px-5 text-xl text-slate-300"
@@ -34,6 +23,17 @@ const Pagination = () => {
               }}
             >
               previous
+            </button>
+          )}
+          {page < 6 && (
+            <button
+              className="p-1 bg-violet-600 capitalize rounded-sm px-5 text-xl text-slate-300"
+              onClick={() => {
+                setPage(page + 1);
+                pageHandle(page);
+              }}
+            >
+              next
             </button>
           )}
         </div>

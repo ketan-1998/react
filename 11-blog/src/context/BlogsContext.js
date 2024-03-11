@@ -1,10 +1,10 @@
-import { createContext, useEffect } from "react";
+import { createContext,} from "react";
 import { useState } from "react";
 import { baseUrl } from "../baseUrl";
 export const BlogsContext = createContext();
 
 export default function BlogsContextProvider({ children }) {
-  const [page, setPage] = useState(4);
+  const [page, setPage] = useState(1);
   const [totalPage, setTotalPage] = useState(null);
   const [posts, setPosts] = useState([]);
   const [loading, setLoading] = useState(true);
