@@ -1,4 +1,5 @@
 import { useState, useEffect, useCallback, useRef } from "react";
+import './App.css'
 
 function App() {
   const [length, setLength] = useState(5);
@@ -8,7 +9,7 @@ function App() {
   const [allowNumber, setAllowNumber] = useState(true);
   const [allowCharacter, setAllowCharacter] = useState(true);
 
-  const passwordGenerator = useCallback(() => {
+  const passwordGenerator = (() => {
     let pass = "";
     let lower = "qwertyuioplkjhgfdsazxcvbnm";
     let upper = "QAZWSXEDCRFVTGBYHNUJMIKOLP";
@@ -19,23 +20,23 @@ function App() {
     if (allowNumber) str += number;
     if (allowLower) str += lower;
     if (allowCharacter) str += special;
-    for (let i = 1; i <= length; i++) {
-      let index = Math.floor(Math.random() * str.length + 1);
+    if (str.length === 0) {
+      setPassword("Please select at least one character type.");
+      return;
+    }
+    console.log(str)
+    for (let i = 0; i < length; i++) {
+      let index = Math.floor(Math.random() * str.length);
       pass += str.charAt(index);
+      console.log('value of i ',i,' and value of pass',pass,' value of length ',length,' value of index ',index)
+      // console.log(str)
     }
     setPassword(pass);
-  }, [
-    allowCharacter,
-    allowUpper,
-    allowLower,
-    allowNumber,
-    setPassword,
-    password,
-  ]);
+  })
 
-  useEffect(() => {
-    passwordGenerator();
-  }, [allowCharacter, allowUpper, allowLower, allowNumber, length]);
+useEffect(()=>{
+  passwordGenerator()
+},[length,allowUpper,allowLower,allowNumber,allowCharacter])
 
   return (
     <div className="bg-slate-900 h-screen flex justify-center items-center">
@@ -43,21 +44,22 @@ function App() {
         <h1 className="text-center capitalize text-3xl  text-slate-300">
           password generator
         </h1>
-        <div className="relative">
+        <div className="relative rounded-xl overflow-hidden ">
           <input
-            className="w-full border-none outline-none py-2 pl-1 rounded-xl"
+            className="w-full border-none outline-none py-2 text-xl text-green-900 bg-slate-300 pl-5 font-semibold"
             placeholder="Password"
             value={password}
+            readOnly
           />
-          <button className="absolute right-0 bottom-0 top-0 text-white text-xl capitalize bg-blue-800 px-4 ">
+          <button className="absolute right-3 bottom-0 top-0 text-white text-xl capitalize bg-blue-800 px-5 ">
             copy
           </button>
         </div>
         <div className="">
-          <div className="flex  items-center gap-4">
+          <div className="flex  items-center gap-4  ">
             <input
               type="range"
-              className="grow"
+              className="grow "
               min={3}
               max={20}
               value={length}
